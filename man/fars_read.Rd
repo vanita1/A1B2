@@ -8,7 +8,7 @@ name fars_read}
 fars_read(filename)
 }
 \arguments{
-\item{-}{filename : a character string with path of the file}
+\item{filename}{a string}
 }
 \value{
 - Tibble object with csv file data
@@ -30,5 +30,5 @@ fars_read function reads the given file and convert resulting data frame
 to a table using tbl_df function from dplyr
 }
 \examples{
-\dontrun{- fars_read("accident_2015.csv.bz2")}
+\dontrun{fars_read("accident_2015.csv.bz2")}
 }

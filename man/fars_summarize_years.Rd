@@ -8,7 +8,7 @@ name fars_summarize_years}
 fars_summarize_years(years)
 }
 \arguments{
-\item{-}{a numeric vector contains years e.g. c(2015,2001,1980)}
+\item{years}{numeric}
 }
 \value{
 A wide format tibble. One column for year and a MONTH column. Each

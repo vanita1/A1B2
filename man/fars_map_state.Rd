@@ -8,7 +8,9 @@ name fars_map_state}
 fars_map_state(state.num, year)
 }
 \arguments{
-\item{-a}{vector containing statenumber and year or state and year e.g. fars_map_state(20,2015)}
+\item{state.num}{numeric}
+
+\item{year}{numeric}
 }
 \description{
 TITLE

@@ -13,22 +13,26 @@
 #': Function Checks the existence of given file. In case file is not found, a
 #'           message is generated. While reading the file,suppresses the progress
 #'           messages to have a clean output
-#'@examples \dontrun{- fars_read("accident_2015.csv.bz2")}
+#'@examples \dontrun{fars_read("accident_2015.csv.bz2")}
 #'@import readr
 #'@importFrom dplyr tbl_df
 #'@importFrom testthat expect_that
-#'@param - filename : a character string with path of the file
+#'
+#'@param filename a string
 #'@return - Tibble object with csv file data
 #'@export
 fars_read <-
   function(filename) {
+    with(filename,{
+    filename = NULL
   if(!file.exists(filename))
     stop("file '", filename, "' does not exist")
   data <- suppressMessages({
     readr::read_csv(filename, progress = FALSE)
   })
   dplyr::tbl_df(data)
-}
+    })}
+
 ##'NAME
 #'name make_filename
 #'
@@ -36,7 +40,7 @@ fars_read <-
 #'title function creates a custom file name based on year argument value
 #'@note make_filename function creates a custom file name based on year argument value
 #'@examples \dontrun{make_filename(2015)}
-#'@param - year- Numeric e.g. 2015
+#'@param year numeric
 #'@return - character string having custom file name e.g.accident_2015.csv.bz2
 #'@export
 make_filename <- function(year) {
@@ -54,10 +58,11 @@ make_filename <- function(year) {
 #'@importFrom dplyr select
 #'@importFrom dplyr mutate
 #'@importFrom magrittr %>%
-#'@param - a numeric vector contains years e.g. c(2015,2001,1980)
+#'@param years numeric
 #'@return - a list of tibbles each containing year and month columns. If files does not exist, returns NULL
 #'@export
 fars_read_years <- function(years) {
+  with(years,{
   lapply(years, function(year) {
     file <- make_filename(year)
     tryCatch({
@@ -69,7 +74,7 @@ fars_read_years <- function(years) {
       return(NULL)
     })
   })
-}
+})}
 ##'name
 #'name fars_summarize_years
 #'
@@ -78,7 +83,7 @@ fars_read_years <- function(years) {
 #'@note -fars_summarize_years combines multiple year files by rows and then group on year and month
 #' Further it calculates summary of the resulting data frame and spreads across year
 
-#'@param- a numeric vector contains years e.g. c(2015,2001,1980)
+#'@param years numeric
 
 #'@return A wide format tibble. One column for year and a MONTH column. Each
 #' value is the count of observations in a year-month.
@@ -92,12 +97,13 @@ fars_read_years <- function(years) {
 #'@importFrom dplyr n
 #'@export
 fars_summarize_years <- function(years) {
+  with(years,{
   dat_list <- fars_read_years(years)
   dplyr::bind_rows(dat_list) %>%
     dplyr::group_by(year, MONTH) %>%
     dplyr::summarize(n = n()) %>%
     tidyr::spread(year, n)
-}
+})}
 ##'name
 #'name fars_map_state
 #'
@@ -108,7 +114,8 @@ fars_summarize_years <- function(years) {
 #'is present and plot longitude against latitude for observations where
 #' longitude is > 900 and latitude is >90
 #' Add Points to a Plot
-#'@param-a vector containing statenumber and year or state and year e.g. fars_map_state(20,2015)
+#'@param state.num numeric
+#'@param year numeric
 
 #'@return NULL
 
@@ -118,6 +125,7 @@ fars_summarize_years <- function(years) {
 #'@examples \dontrun{fars_map_state(20,2015)}
 #'@export
 fars_map_state <- function(state.num, year) {
+  with(state.num,year,{
   filename <- make_filename(year)
   data <- fars_read(filename)
   state.num <- as.integer(state.num)
@@ -136,4 +144,4 @@ fars_map_state <- function(state.num, year) {
               xlim = range(LONGITUD, na.rm = TRUE))
     graphics::points(LONGITUD, LATITUDE, pch = 46)
   })
-}
+})}

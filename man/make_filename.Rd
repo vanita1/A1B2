@@ -8,7 +8,7 @@ name make_filename}
 make_filename(year)
 }
 \arguments{
-\item{-}{year- Numeric e.g. 2015}
+\item{year}{numeric}
 }
 \value{
 - character string having custom file name e.g.accident_2015.csv.bz2

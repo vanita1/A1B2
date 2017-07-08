@@ -8,7 +8,7 @@ name fars_read_years}
 fars_read_years(years)
 }
 \arguments{
-\item{-}{a numeric vector contains years e.g. c(2015,2001,1980)}
+\item{years}{numeric}
 }
 \value{
 - a list of tibbles each containing year and month columns. If files does not exist, returns NULL
