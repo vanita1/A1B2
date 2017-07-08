@@ -2,7 +2,7 @@ Package: A1B1
 Type: Package
 Title: What the Package Does (Title Case)
 Version: 0.1.0
-Imports: readr,dplyr,graphics,magrittr,maps,tidyr
+Imports: readr,dplyr,graphics,magrittr,maps,tidyr,testthat
 Author: Who wrote it
 Maintainer: The package maintainer <yourself@somewhere.net>
 Description: More about what it does (maybe more than one line)

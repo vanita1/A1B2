@@ -16,6 +16,7 @@
 #'@examples \dontrun{- fars_read("accident_2015.csv.bz2")}
 #'@import readr
 #'@importFrom dplyr tbl_df
+#'@importFrom testthat expect_that
 #'@param - filename : a character string with path of the file
 #'@return - Tibble object with csv file data
 #'@export

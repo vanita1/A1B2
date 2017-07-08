@@ -1,14 +1,14 @@
 {
     "collab_server" : "",
-    "contents" : "library(testthat)\nlibrary(A1B1)\n\ntest_check(\"A1B1\")\n",
+    "contents" : "library(testthat)\nlibrary(A1B1)\ntest_check(\"A1B1\")\n",
     "created" : 1499503499339.000,
-    "dirty" : false,
+    "dirty" : true,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "2716570218",
+    "hash" : "1594609305",
     "id" : "14507BC5",
     "lastKnownWriteTime" : 1499503795,
-    "last_content_update" : 1499503795351,
+    "last_content_update" : 1499507542281,
     "path" : "~/A1B1/tests/testthat.R",
     "project_path" : "tests/testthat.R",
     "properties" : {
