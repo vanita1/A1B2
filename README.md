@@ -1,1 +1,1 @@
-https://travis-ci.org/vanita1/A1B2/builds/251519528
+https://travis-ci.org/vanita1/A1B2.svg?branch=master
